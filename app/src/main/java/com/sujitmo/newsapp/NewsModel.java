@@ -11,12 +11,13 @@ public class NewsModel {
 
     public NewsContract.Model newsModel;
 
+
     public NewsModel() {
         newsModel = new NewsContract.Model() {
             @Override
             public void getNewsFromApi(OnFinishedListener onFinishedListener, String country, String category) {
                 ApiEndPoints apiService = RetrofitService.getRetrofitInstance().create(ApiEndPoints.class);
-                Call<NewsItemResponse> call = apiService.getNewsList(country, category, "YOUR_NEWSAPI.ORG_API_KEY");
+                Call<NewsItemResponse> call = apiService.getNewsList(country, category, "YOUR_NEWSAPI.ORG_API_KEY");//YOUR_NEWSAPI.ORG_API_KEY
                 call.enqueue(new Callback<NewsItemResponse>() {
                     @Override
                     public void onResponse(Call<NewsItemResponse> call, Response<NewsItemResponse> response) {
